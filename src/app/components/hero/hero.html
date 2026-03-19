@@ -10,7 +10,7 @@
         erejét egy biztonságos, nyugodt környezetben.
       </p>
       <div class="hero-actions">
-        <a href="#kapcsolat" class="btn btn-primary">Időpontfoglalás</a>
+        <a href="#kapcsolat" class="btn btn-primary" (click)="$event.preventDefault(); bookingService.open()">Időpontfoglalás</a>
         <a href="#szolgaltatasok" class="btn btn-outline">Szolgáltatások</a>
       </div>
     </div>
