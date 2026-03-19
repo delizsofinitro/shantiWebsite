@@ -15,7 +15,7 @@
           </div>
           <div>
             <h4>Email</h4>
-            <p>info&#64;shanti-terapia.hu</p>
+            <p>delizsofia108&#64;gmail.com</p>
           </div>
         </div>
         <div class="info-card">
@@ -24,7 +24,7 @@
           </div>
           <div>
             <h4>Telefon</h4>
-            <p>+36 30 123 4567</p>
+            <p><a href="tel:+36301234567">+36 30 123 4567</a></p>
           </div>
         </div>
         <div class="info-card">
@@ -47,33 +47,66 @@
         </div>
       </div>
 
-      <form class="contact-form" (submit)="$event.preventDefault()">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="name">Név</label>
-            <input type="text" id="name" placeholder="Teljes neved">
+      <div class="contact-form-wrapper">
+        @if (isError) {
+          <div class="form-error" role="alert">
+            Valami hiba történt az üzenet küldésekor. Nem gond, hívj fel:
+            <a href="tel:+36301234567">+36 30 123 4567</a>
           </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="email&#64;pelda.hu">
+        }
+
+        @if (isSuccess) {
+          <div class="form-success">
+            <p>Köszönöm az üzeneted! 4 órán belül válaszolok. 💚</p>
           </div>
-        </div>
-        <div class="form-group">
-          <label for="service">Szolgáltatás</label>
-          <select id="service">
-            <option value="">Válassz szolgáltatást...</option>
-            <option value="lomi">Hawaii Lomi Lomi Masszázs</option>
-            <option value="kineziologia">Kineziológia</option>
-            <option value="energetikai">Energetikai Kezelés</option>
-            <option value="tanacsadas">Holisztikus Tanácsadás</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="message">Üzenet</label>
-          <textarea id="message" rows="5" placeholder="Írd le, miben segíthetek..."></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Üzenet küldése</button>
-      </form>
+        } @else {
+          <form class="contact-form" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Név</label>
+                <input type="text" id="name" formControlName="name" placeholder="Teljes neved">
+                @if (contactForm.get('name')?.invalid && contactForm.get('name')?.touched) {
+                  <span class="field-error">Kérlek add meg a neved</span>
+                }
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" formControlName="email" placeholder="email&#64;pelda.hu">
+                @if (contactForm.get('email')?.invalid && contactForm.get('email')?.touched) {
+                  @if (contactForm.get('email')?.errors?.['required']) {
+                    <span class="field-error">Kérlek add meg az email címed</span>
+                  } @else {
+                    <span class="field-error">Kérlek adjon meg érvényes email címet</span>
+                  }
+                }
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="service">Szolgáltatás</label>
+              <select id="service" formControlName="service">
+                <option value="">Válassz szolgáltatást...</option>
+                <option value="lomi">Hawaii Lomi Lomi Masszázs</option>
+                <option value="kineziologia">Kineziológia</option>
+                <option value="energetikai">Energetikai Kezelés</option>
+                <option value="tanacsadas">Holisztikus Tanácsadás</option>
+              </select>
+              @if (contactForm.get('service')?.invalid && contactForm.get('service')?.touched) {
+                <span class="field-error">Kérlek válassz egy szolgáltatást</span>
+              }
+            </div>
+            <div class="form-group">
+              <label for="message">Üzenet</label>
+              <textarea id="message" formControlName="message" rows="5" placeholder="Írd le, miben segíthetek..."></textarea>
+              @if (contactForm.get('message')?.invalid && contactForm.get('message')?.touched) {
+                <span class="field-error">Kérlek írj legalább 10 karaktert</span>
+              }
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="isLoading">
+              {{ isLoading ? 'Küldés...' : 'Üzenet küldése' }}
+            </button>
+          </form>
+        }
+      </div>
     </div>
   </div>
 </section>
