@@ -33,8 +33,9 @@ development_status:
   4-2-idopont-modal-alap: done
   4-3-szabad-idopontok-megjelenítése: done
   4-4-menu-es-hero-gomb-integráció: done
-  4-5-emailjs-booking-sablon: review   # EmailJS template létrehozása a foglaláshoz
+  4-5-emailjs-booking-sablon: done     # code review elvégezve, 6 patch következő körben
   4-6-valos-backend-foglaltsag: backlog  # valódi foglalt időpontok API-ból
+  4-7-booking-patch-fixes: ready-for-dev # #1 timezone, #2 reopen reset, #3 sunday slots, #4 selectTime guard, #5 ngOnDestroy, #6 success reset
   epic-4-retrospective: optional
 
   # ─── Epic 5: SEO és teljesítmény ─────────────────────────────
