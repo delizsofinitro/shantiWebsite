@@ -1,4 +1,5 @@
-import { Component, HostListener, signal } from '@angular/core';
+import { Component, HostListener, inject, signal } from '@angular/core';
+import { BookingService } from '../../services/booking.service';
 
 @Component({
   selector: 'app-header',
@@ -9,6 +10,7 @@ import { Component, HostListener, signal } from '@angular/core';
 export class Header {
   scrolled = signal(false);
   mobileMenuOpen = signal(false);
+  bookingService = inject(BookingService);
 
   @HostListener('window:scroll')
   onScroll() {
@@ -21,5 +23,10 @@ export class Header {
 
   closeMobileMenu() {
     this.mobileMenuOpen.set(false);
+  }
+
+  openBooking() {
+    this.closeMobileMenu();
+    this.bookingService.open();
   }
 }
