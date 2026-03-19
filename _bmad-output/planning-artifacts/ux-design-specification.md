@@ -1,5 +1,5 @@
 ---
-stepsCompleted: [1, 2]
+stepsCompleted: [1, 2, 3, 4]
 inputDocuments: []
 ---
 
@@ -119,3 +119,46 @@ A Shanti egy holisztikus terápiás praxis online jelenléte, amely meleg, nyugo
 - **Design**: Meglévő kártya stílus továbbvitele (20px border-radius, hover effekt)
 - **CTA**: Minden szolgáltatáskártyánál „Időpontfoglalás" gomb
 - **Reszponzív**: Mobilon teljes szélességű kártyák egymás alatt
+
+---
+
+## Core User Experience
+
+### Meghatározó élmény
+
+A Shanti oldal két egyenrangú fő felhasználói akciót szolgál:
+1. **Online időpontfoglalás** – A látogató a lehető legkevesebb lépésben tudjon időpontot kérni
+2. **Árlista megtekintése** – Átlátható, önálló szekció, nem a szolgáltatásleírásba ágyazva
+
+Minden szekció (hero, szolgáltatások, rólam, vélemények) ezekre a pillanatokra épít – bizalmat épít, hogy a látogató végül foglaljon vagy tájékozódjon az árakról.
+
+### Platform stratégia
+
+- **Platform**: Reszponzív web (Angular), mobile-first megközelítés
+- **Forgalmi források**: Google keresés, Instagram, szájhagyomány
+- **SEO fókusz**: Lokális keresés (Biatorbágy, Budaörs, Herceghalom + holisztikus terápia kulcsszavak)
+- **Instagram integráció**: Link az oldalra, konzisztens vizuális világ az Insta tartalmakkal
+- **Offline**: Nem szükséges
+
+### Erőfeszítés nélküli interakciók
+
+- **Időpontfoglalás**: Maximum 3 lépés – szolgáltatás kiválasztása → kapcsolatfelvételi form kitöltése → küldés. Minden oldalról elérhető a sticky CTA-n keresztül.
+- **Árlista**: Egy kattintás a navigációból, azonnal átlátható kártya-layout. Nem kell keresgélni.
+- **Kapcsolatfelvétel választása**: A felhasználó eldöntheti, hogy emailben vagy telefonon szeretne választ kapni (form mező: „Hogyan keresselek?")
+- **Mobil navigáció**: Az oldal bármely pontjáról 1 kattintásra van az időpontfoglalás
+
+### Kritikus sikerpillanatok
+
+| Pillanat | Leírás | Hogyan érjük el |
+|---|---|---|
+| **Első benyomás** | A látogató megérkezik → azonnal érzi a nyugalmat | Meleg fotók, természetes színek, lélegző layout |
+| **Bizalomépítés** | „Ez a terapeuta hiteles és tapasztalt" | Valódi fotók, vendégvélemények, 10+ év tapasztalat badge |
+| **Ár átláthatóság** | „Pontosan tudom, mire számíthatok" | Önálló árlista szekció, tiszta kártya design |
+| **Foglalás könnyedsége** | „Ez gyors volt és egyszerű" | Rövid form, azonnali visszajelzés küldés után |
+
+### Élmény-alapelvek
+
+1. **Nyugalom első** – Minden vizuális és interakciós döntés a belső béke érzetét erősíti. Nincs zsúfoltság, nincs agresszív CTA.
+2. **Átláthatóság** – Árak, szolgáltatások, elérhetőség – semmi rejtett. A bizalom az átláthatóságból ered.
+3. **Minimális erőfeszítés** – Időpontfoglalás és árlista megtekintése egyaránt 1-3 lépésen belül elérhető bármely oldalról.
+4. **Személyes kapcsolat** – Az oldal nem automatizált rendszert közvetít, hanem egy valódi ember személyes figyelmét. A válasz emailben vagy visszahívással érkezik – a látogató választ.
