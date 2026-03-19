@@ -12,6 +12,7 @@ export class Arlista {
       title: 'Hawaii Lomi Lomi Masszázs',
       duration: '90 perc',
       price: '18 000 Ft',
+      image: '1000_1695124318.jpeg',
       recommendation: 'Neked ajánlom, ha feszültséget érzel a testedben és szeretnéd elengedni',
       includes: [
         'Teljes test masszázs',
@@ -24,6 +25,7 @@ export class Arlista {
       title: 'Kineziológia',
       duration: '60–90 perc',
       price: '16 000 Ft',
+      image: '1000_1767853125.jpeg',
       recommendation: 'Neked ajánlom, ha szeretnéd megérteni a stressz mélyebb okait',
       includes: [
         'Izomtesztelésen alapuló vizsgálat',
@@ -36,6 +38,7 @@ export class Arlista {
       title: 'Energetikai Kezelés',
       duration: '60 perc',
       price: '14 000 Ft',
+      image: '1000_1695124318.jpeg',
       recommendation: 'Neked ajánlom, ha kimerültnek érzed magad és szeretnéd visszanyerni az energiádat',
       includes: [
         'Finom energetikai technikák',
@@ -48,6 +51,7 @@ export class Arlista {
       title: 'Holisztikus Tanácsadás',
       duration: '45 perc',
       price: '10 000 Ft',
+      image: '1000_1767853125.jpeg',
       recommendation: 'Neked ajánlom, ha úgy érzed, elakadtál és új perspektívára van szükséged',
       includes: [
         'Személyre szabott konzultáció',

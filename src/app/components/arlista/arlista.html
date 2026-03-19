@@ -10,36 +10,41 @@
     <div class="arlista-grid">
       @for (service of services; track service.title) {
         <div class="arlista-card">
-          <div class="card-header">
-            <h3>{{ service.title }}</h3>
-            <div class="card-meta">
-              <span class="duration">
-                <svg viewBox="0 0 20 20" fill="none" width="16" height="16">
-                  <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
-                  <path d="M10 6v4l2.5 2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                </svg>
-                {{ service.duration }}
-              </span>
-              <span class="price">{{ service.price }}</span>
-            </div>
+          <div class="card-image">
+            <img [src]="service.image" [alt]="service.title" loading="lazy">
           </div>
+          <div class="card-body">
+            <div class="card-header">
+              <h3>{{ service.title }}</h3>
+              <div class="card-meta">
+                <span class="duration">
+                  <svg viewBox="0 0 20 20" fill="none" width="16" height="16">
+                    <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M10 6v4l2.5 2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                  {{ service.duration }}
+                </span>
+                <span class="price">{{ service.price }}</span>
+              </div>
+            </div>
 
-          <ul class="card-includes">
-            @for (item of service.includes; track item) {
-              <li>
-                <svg viewBox="0 0 16 16" fill="none" width="14" height="14">
-                  <path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                {{ item }}
-              </li>
-            }
-          </ul>
+            <p class="card-recommendation">
+              <em>{{ service.recommendation }}</em>
+            </p>
 
-          <p class="card-recommendation">
-            <em>{{ service.recommendation }}</em>
-          </p>
+            <ul class="card-includes">
+              @for (item of service.includes; track item) {
+                <li>
+                  <svg viewBox="0 0 16 16" fill="none" width="14" height="14">
+                    <path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  {{ item }}
+                </li>
+              }
+            </ul>
 
-          <a href="#kapcsolat" class="btn btn-secondary">Időpontot foglalok</a>
+            <a href="#kapcsolat" class="btn btn-secondary">Időpontot foglalok</a>
+          </div>
         </div>
       }
     </div>
