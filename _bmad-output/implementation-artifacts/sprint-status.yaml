@@ -1,0 +1,52 @@
+generated: 2026-03-19
+last_updated: 2026-03-19
+project: shanti
+project_key: SHANTI
+tracking_system: file-system
+story_location: "{project-root}/_bmad-output/implementation-artifacts/stories"
+
+development_status:
+
+  # ─── Epic 1: Alap landing page ───────────────────────────────
+  epic-1: done
+  1-1-hero-szekció: done
+  1-2-services-szekció: done
+  1-3-about-szekció: done
+  1-4-testimonials-szekció: done
+  1-5-footer: done
+  epic-1-retrospective: optional
+
+  # ─── Epic 2: Kapcsolat és EmailJS integráció ─────────────────
+  epic-2: done
+  2-1-contact-form-layout: done
+  2-2-emailjs-integracio: done         # tech-spec-emailjs-integracio.md
+  epic-2-retrospective: optional
+
+  # ─── Epic 3: Árlista szekció ─────────────────────────────────
+  epic-3: done
+  3-1-arlista-szekció: done
+  epic-3-retrospective: optional
+
+  # ─── Epic 4: Online időpontfoglaló modal ─────────────────────
+  epic-4: in-progress
+  4-1-booking-service: done
+  4-2-idopont-modal-alap: done
+  4-3-szabad-idopontok-megjelenítése: done
+  4-4-menu-es-hero-gomb-integráció: done
+  4-5-emailjs-booking-sablon: review   # EmailJS template létrehozása a foglaláshoz
+  4-6-valos-backend-foglaltsag: backlog  # valódi foglalt időpontok API-ból
+  epic-4-retrospective: optional
+
+  # ─── Epic 5: SEO és teljesítmény ─────────────────────────────
+  epic-5: backlog
+  5-1-meta-tags-og: backlog
+  5-2-image-optimalizáció: backlog
+  5-3-lighthouse-audit: backlog
+  epic-5-retrospective: optional
+
+  # ─── Epic 6: Tartalom és finomítások ─────────────────────────
+  epic-6: backlog
+  6-1-valós-képek-feltöltése: backlog
+  6-2-valós-telefonszám-adatok: backlog
+  6-3-google-maps-integráció: backlog
+  epic-6-retrospective: optional
