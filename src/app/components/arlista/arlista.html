@@ -1,0 +1,55 @@
+<section class="arlista" id="arlista">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-subtitle">Árlista</p>
+      <h2 class="section-title">Kezelések és Díjak</h2>
+      <hr class="section-divider">
+      <p class="section-intro">Minden kezelés személyre szabott és egyedi. Az árak tájékoztató jellegűek – kérdés esetén bátran írj!</p>
+    </div>
+
+    <div class="arlista-grid">
+      @for (service of services; track service.title) {
+        <div class="arlista-card">
+          <div class="card-header">
+            <h3>{{ service.title }}</h3>
+            <div class="card-meta">
+              <span class="duration">
+                <svg viewBox="0 0 20 20" fill="none" width="16" height="16">
+                  <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M10 6v4l2.5 2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                {{ service.duration }}
+              </span>
+              <span class="price">{{ service.price }}</span>
+            </div>
+          </div>
+
+          <ul class="card-includes">
+            @for (item of service.includes; track item) {
+              <li>
+                <svg viewBox="0 0 16 16" fill="none" width="14" height="14">
+                  <path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                {{ item }}
+              </li>
+            }
+          </ul>
+
+          <p class="card-recommendation">
+            <em>{{ service.recommendation }}</em>
+          </p>
+
+          <a href="#kapcsolat" class="btn btn-secondary">Időpontot foglalok</a>
+        </div>
+      }
+    </div>
+
+    <div class="arlista-note">
+      <svg viewBox="0 0 24 24" fill="none" width="20" height="20">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M12 8v4M12 16h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <p>Az árak tájékoztató jellegűek. Bérlet és csomag lehetőségekről érdeklődj személyesen vagy emailben.</p>
+    </div>
+  </div>
+</section>

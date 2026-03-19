@@ -6,10 +6,11 @@ import { About } from './components/about/about';
 import { Testimonials } from './components/testimonials/testimonials';
 import { Contact } from './components/contact/contact';
 import { Footer } from './components/footer/footer';
+import { Arlista } from './components/arlista/arlista';
 
 @Component({
   selector: 'app-root',
-  imports: [Header, Hero, Services, About, Testimonials, Contact, Footer],
+  imports: [Header, Hero, Services, About, Testimonials, Contact, Footer, Arlista],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

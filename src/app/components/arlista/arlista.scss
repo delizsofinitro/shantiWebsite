@@ -1,0 +1,161 @@
+:host {
+  display: block;
+}
+
+.arlista {
+  padding: var(--section-padding);
+  background-color: var(--color-beige);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-intro {
+  max-width: 520px;
+  margin: 0 auto;
+  color: var(--color-text-light);
+}
+
+.arlista-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-bottom: 40px;
+}
+
+.arlista-card {
+  background: var(--color-white);
+  border-radius: 20px;
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: var(--transition);
+  border: 1.5px solid transparent;
+
+  &:hover {
+    border-color: var(--color-terracotta-light);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(193, 123, 94, 0.12);
+  }
+}
+
+.card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  h3 {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--color-text);
+    font-weight: 600;
+  }
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.duration {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+}
+
+.price {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-terracotta);
+}
+
+.card-includes {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 0.875rem;
+    color: var(--color-text);
+
+    svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--color-sage);
+    }
+  }
+}
+
+.card-recommendation {
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+  line-height: 1.5;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-beige-dark);
+}
+
+.btn-secondary {
+  display: inline-block;
+  padding: 12px 24px;
+  border: 1.5px solid var(--color-terracotta);
+  color: var(--color-terracotta);
+  border-radius: 50px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  transition: var(--transition);
+  background: transparent;
+
+  &:hover {
+    background: var(--color-terracotta);
+    color: var(--color-text);
+  }
+}
+
+.arlista-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--color-beige-light);
+  border-radius: 12px;
+  padding: 16px 20px;
+  max-width: 640px;
+  margin: 0 auto;
+
+  svg {
+    flex-shrink: 0;
+    color: var(--color-terracotta);
+    margin-top: 2px;
+  }
+
+  p {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 768px) {
+  .arlista-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .arlista-card {
+    padding: 28px 24px;
+  }
+}
