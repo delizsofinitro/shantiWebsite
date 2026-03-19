@@ -1,0 +1,147 @@
+@if (bookingService.isOpen()) {
+  <div class="modal-overlay" (click)="close()" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+
+      <button class="modal-close" (click)="close()" aria-label="Bezárás">
+        <svg viewBox="0 0 24 24" fill="none" width="20" height="20">
+          <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <div class="modal-header">
+        <p class="section-subtitle">Online foglalás</p>
+        <h2 id="modal-title">Időpontot foglalok</h2>
+        <p class="modal-intro">Töltsd ki az adatokat, és hamarosan visszajelzek a megerősítéssel!</p>
+      </div>
+
+      @if (isSuccess) {
+        <div class="booking-success">
+          <div class="success-icon">
+            <svg viewBox="0 0 48 48" fill="none" width="48" height="48">
+              <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M14 24l7 7 13-14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Foglalásod megérkezett!</h3>
+          <p>Köszönöm, hamarosan visszajelzek a megerősítéssel. 💚</p>
+          <button class="btn btn-primary" (click)="close()">Bezárás</button>
+        </div>
+      } @else {
+        @if (isError) {
+          <div class="booking-error" role="alert">
+            Valami hiba történt. Hívj fel közvetlenül:
+            <a href="tel:+36301234567">+36 30 123 4567</a>
+          </div>
+        }
+
+        <form class="booking-form" [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="b-name">Neved *</label>
+              <input type="text" id="b-name" formControlName="name" placeholder="Teljes neved" autocomplete="name">
+              @if (bookingForm.get('name')?.invalid && bookingForm.get('name')?.touched) {
+                <span class="field-error">Kérlek add meg a neved</span>
+              }
+            </div>
+            <div class="form-group">
+              <label for="b-email">Email *</label>
+              <input type="email" id="b-email" formControlName="email" placeholder="email@pelda.hu" autocomplete="email">
+              @if (bookingForm.get('email')?.invalid && bookingForm.get('email')?.touched) {
+                <span class="field-error">Érvényes email cím szükséges</span>
+              }
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="b-phone">Telefonszám</label>
+              <input type="tel" id="b-phone" formControlName="phone" placeholder="+36 30 000 0000" autocomplete="tel">
+            </div>
+            <div class="form-group">
+              <label for="b-service">Kezelés *</label>
+              <select id="b-service" formControlName="service">
+                <option value="">Válassz kezelést...</option>
+                @for (s of services; track s) {
+                  <option [value]="s">{{ s }}</option>
+                }
+              </select>
+              @if (bookingForm.get('service')?.invalid && bookingForm.get('service')?.touched) {
+                <span class="field-error">Kérlek válassz kezelést</span>
+              }
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="b-date">Kívánt dátum *</label>
+              <input
+                type="date"
+                id="b-date"
+                formControlName="date"
+                [min]="minDate"
+                (change)="onDateChange($event)">
+              @if (bookingForm.get('date')?.errors?.['sunday'] && bookingForm.get('date')?.touched) {
+                <span class="field-error">Vasárnap zárva vagyunk</span>
+              } @else if (bookingForm.get('date')?.errors?.['required'] && bookingForm.get('date')?.touched) {
+                <span class="field-error">Kérlek válassz dátumot</span>
+              }
+              <span class="field-hint">H–P: 9–19, Szo: 9–14 | Vasárnap: zárva</span>
+            </div>
+            <div class="form-group">&nbsp;</div>
+          </div>
+
+          @if (selectedDate() && !bookingForm.get('date')?.errors?.['sunday']) {
+            <div class="form-group slot-group">
+              <div class="slot-label-row">
+                <label>Időpont kiválasztása *</label>
+                <div class="slot-legend">
+                  <span class="legend-dot free"></span>Szabad
+                  <span class="legend-dot taken"></span>Foglalt
+                </div>
+              </div>
+
+              @if (!hasAnyFreeSlot) {
+                <p class="slot-full-msg">Erre a napra már nincs szabad időpontunk. Kérlek válassz másik napot!</p>
+              } @else {
+                <div class="slot-grid" role="group" aria-label="Válassz időpontot">
+                  @for (item of slotItems; track item.slot) {
+                    <button
+                      type="button"
+                      class="slot-btn"
+                      [class.slot-available]="item.available"
+                      [class.slot-taken]="!item.available"
+                      [class.slot-selected]="bookingForm.get('time')?.value === item.slot"
+                      [disabled]="!item.available"
+                      [attr.aria-pressed]="bookingForm.get('time')?.value === item.slot"
+                      [attr.aria-label]="item.slot + (item.available ? ' – szabad' : ' – foglalt')"
+                      (click)="selectTime(item.slot)">
+                      {{ item.slot }}
+                    </button>
+                  }
+                </div>
+              }
+
+              @if (bookingForm.get('time')?.invalid && bookingForm.get('time')?.touched) {
+                <span class="field-error">Kérlek válassz időpontot</span>
+              }
+            </div>
+          }
+
+          <div class="form-group">
+            <label for="b-note">Megjegyzés</label>
+            <textarea id="b-note" formControlName="note" rows="3" placeholder="Bármit szeretnél előre közölni..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-full" [disabled]="isLoading">
+            @if (isLoading) {
+              <span class="btn-spinner"></span> Küldés...
+            } @else {
+              Foglalás küldése
+            }
+          </button>
+        </form>
+      }
+
+    </div>
+  </div>
+}

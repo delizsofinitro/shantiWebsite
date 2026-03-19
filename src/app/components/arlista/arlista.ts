@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { BookingService } from '../../services/booking.service';
 
 @Component({
   selector: 'app-arlista',
@@ -7,6 +8,11 @@ import { Component } from '@angular/core';
   styleUrl: './arlista.scss',
 })
 export class Arlista {
+  bookingService = inject(BookingService);
+
+  openBooking(serviceTitle: string) {
+    this.bookingService.open(serviceTitle);
+  }
   services = [
     {
       title: 'Hawaii Lomi Lomi Masszázs',
