@@ -1,5 +1,5 @@
 ---
-stepsCompleted: [1, 2, 3, 4, 5, 6]
+stepsCompleted: [1, 2, 3, 4, 5, 6, 7]
 inputDocuments: []
 ---
 
@@ -316,3 +316,76 @@ Kíváncsiság → Nyugalom → Bizalom → Várakozás → Öröm
 - Sötét/világos szekció háttér váltakozás rendszerezése
 - Mobilra optimalizált breakpoint rendszer (480/768/1024px)
 - Animációs utility osztályok (fade-in, slide-up) – később, ha szükséges
+
+---
+
+## Meghatározó felhasználói élmény (Defining Experience)
+
+### A meghatározó élmény
+
+**„Van egy csodás nő, akihez mindenképp el kell menned – annyira fantasztikus gyógyulási élményem volt, amit neked is meg kell tapasztalnod."**
+
+Ez a szájhagyomány a Shanti oldal UX-ének alapja. Az oldal feladata: **megerősíteni azt a bizalmat, amit a személyes ajánlás már elindított** – és elvezetni a foglalásig.
+
+A kettős cél (megismerés + foglalás) egyformán fontos:
+- **Új látogató** (Google/Insta): Megismerés → bizalomépítés → foglalás
+- **Ajánlott látogató** (szájhagyomány): Megerősítés → gyors foglalás
+
+### Felhasználói mentális modell
+
+**Az ajánlott látogató gondolatmenete:**
+1. „A barátnőm mesélte, milyen fantasztikus volt" → Keresés Google-ön / link kapás
+2. „Látom az oldalt → igen, ez az!" → A vizuális világ megerősíti az elvárást
+3. „Megnézem az árakat → rendben, ez reális" → Árlista átlátható
+4. „Foglalok" → 3 kattintás, kész
+
+**Az új látogató gondolatmenete:**
+1. „Holisztikus terápia Biatorbágy/Budaörs" → Google találat
+2. „Érdekes, milyen nyugodt ez az oldal" → Hero szekció befogad
+3. „Ki ez az ember? Megbízható?" → Rólam + vélemények szekció
+4. „Mennyibe kerül? Mit kapok?" → Árlista oldal
+5. „Ezt kipróbálom" → Foglalás
+
+### Sikerkritériumok
+
+| Kritérium | Mérce |
+|---|---|
+| **Első benyomás** | 3 másodpercen belül: „Jó helyen vagyok" érzés |
+| **Bizalomépítés** | A rólam szekció + vélemények után: „Ő az, akit kerestem" |
+| **Áttekinthetőség** | Az árlista oldalon 10 másodperc alatt megtalálja a releváns árat |
+| **Foglalás** | Maximum 3 lépés: CTA kattintás → form kitöltés → küldés |
+| **Megerősítés** | Küldés után: személyes üzenet → „Már várom!" érzés |
+| **Nincs zsákutca** | Ha bármi nem működik → telefon/email 1 kattintásra |
+
+### UX minták
+
+**Bevált mintákat használunk** – ez nem újító app, hanem egy meleg, személyes landing page:
+
+- Scroll-alapú storytelling (hero → szolgáltatások → rólam → vélemények → foglalás)
+- Kártya-alapú információ megjelenítés (szolgáltatások, árlista)
+- Egyszerű form-alapú időpontfoglalás (nem komplex booking rendszer)
+- Sticky CTA mobilon (állandó hozzáférés a foglaláshoz)
+
+**Egyedi csavar:** Az oldal nem klinikai infót közvetít, hanem **élményt ígér**. A szövegek, képek és hangulat mind azt mondják: „Ezt meg kell tapasztalnod."
+
+### Élmény-mechanika
+
+**1. Indítás (Trigger):**
+- Szájhagyomány: „Nézd meg az oldalát!" → link kattintás
+- Google: „holisztikus terápia Budaörs" → találat → kattintás
+- Instagram: profil link → landing page
+
+**2. Interakció (Felfedezés):**
+- Hero: meleg kép + „Találd meg a belső békéd" → scroll ikon hív lefelé
+- Természetes görgetés: szolgáltatások → rólam → vélemények → árak → foglalás
+- Bármikor: navigáció vagy sticky CTA → közvetlen foglalás
+
+**3. Visszajelzés:**
+- Vizuális: meleg színek, nyugodt tipográfia, valódi fotók → „igen, ez jó"
+- Tartalmi: vendégvélemények → „mások is így éreztek"
+- Funkcionális: form validáció → „jól csinálom"
+
+**4. Befejezés:**
+- Form elküldve → „Köszönöm szépen! Hamarosan jelentkezem 💛" üzenet
+- A látogató tudja: emailben vagy telefonon kap választ (amit ő kért)
+- Érzés: „Már várom a kezelést!"
