@@ -1,0 +1,24 @@
+<header [class.scrolled]="scrolled()">
+  <nav class="container nav">
+    <a href="#" class="logo" (click)="closeMobileMenu()">
+      <div class="logo-icon">
+        <img src="logo.svg" alt="Shanti logó">
+      </div>
+      <span class="logo-text">Shanti</span>
+    </a>
+
+    <button class="hamburger" [class.active]="mobileMenuOpen()" (click)="toggleMobileMenu()" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav-links" [class.open]="mobileMenuOpen()">
+      <li><a href="#szolgaltatasok" (click)="closeMobileMenu()">Szolgáltatások</a></li>
+      <li><a href="#rolam" (click)="closeMobileMenu()">Rólam</a></li>
+      <li><a href="#velemenyek" (click)="closeMobileMenu()">Vélemények</a></li>
+      <li><a href="#kapcsolat" (click)="closeMobileMenu()">Kapcsolat</a></li>
+      <li><a href="#kapcsolat" class="btn btn-primary nav-cta" (click)="closeMobileMenu()">Időpontfoglalás</a></li>
+    </ul>
+  </nav>
+</header>

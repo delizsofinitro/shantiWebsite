@@ -1,0 +1,27 @@
+﻿<section class="testimonials" id="velemenyek">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-subtitle">Vélemények</p>
+      <h2 class="section-title">Vendégeim mondták</h2>
+      <hr class="section-divider">
+    </div>
+
+    <div class="testimonials-grid">
+      @for (testimonial of testimonials; track testimonial.name) {
+        <div class="testimonial-card">
+          <div class="quote-icon">"</div>
+          <p class="testimonial-text">{{ testimonial.text }}</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              {{ testimonial.name.charAt(0) }}
+            </div>
+            <div>
+              <span class="author-name">{{ testimonial.name }}</span>
+              <span class="author-service">{{ testimonial.service }}</span>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

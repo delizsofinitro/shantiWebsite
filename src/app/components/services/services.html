@@ -1,0 +1,24 @@
+﻿<section class="services" id="szolgaltatasok">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-subtitle">Szolgáltatások</p>
+      <h2 class="section-title">Terápiás Kezelések</h2>
+      <hr class="section-divider">
+      <p class="section-intro">Minden kezelés személyre szabott, figyelembe véve az egyéni igényeket és a test aktuális állapotát.</p>
+    </div>
+
+    <div class="services-grid">
+      @for (service of services; track service.title) {
+        <div class="service-card">
+          <div class="service-icon" [innerHTML]="service.icon"></div>
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.description }}</p>
+          <div class="service-details">
+            <span class="service-duration">{{ service.duration }}</span>
+            <span class="service-price">{{ service.price }}</span>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

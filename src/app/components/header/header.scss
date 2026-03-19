@@ -1,0 +1,156 @@
+:host {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+header {
+  background-color: transparent;
+  transition: var(--transition);
+  padding: 20px 0;
+
+  &.scrolled {
+    background-color: rgba(255, 249, 240, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 12px 0;
+    box-shadow: 0 2px 20px rgba(61, 50, 41, 0.08);
+  }
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-terracotta);
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.logo-icon {
+  width: 40px;
+  height: 48px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.logo-text {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+
+  a:not(.nav-cta) {
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    color: var(--color-text);
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background-color: var(--color-terracotta);
+      transition: var(--transition);
+    }
+
+    &:hover {
+      color: var(--color-terracotta);
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.nav-cta {
+  padding: 10px 24px !important;
+  font-size: 0.8rem !important;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 1001;
+
+  span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-text);
+    transition: var(--transition);
+  }
+
+  &.active {
+    span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    span:nth-child(2) {
+      opacity: 0;
+    }
+    span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    max-width: 320px;
+    height: 100vh;
+    background-color: var(--color-cream);
+    flex-direction: column;
+    justify-content: center;
+    gap: 28px;
+    padding: 40px;
+    transition: right 0.3s ease;
+    box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
+
+    &.open {
+      right: 0;
+    }
+
+    a:not(.nav-cta) {
+      font-size: 1.1rem;
+    }
+  }
+}

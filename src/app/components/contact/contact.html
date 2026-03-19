@@ -1,0 +1,79 @@
+﻿<section class="contact" id="kapcsolat">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-subtitle">Kapcsolat</p>
+      <h2 class="section-title">Foglalj időpontot</h2>
+      <hr class="section-divider">
+      <p class="section-intro">Kérdésed van, vagy szeretnél időpontot foglalni? Írj nekem, és hamarosan visszajelzek!</p>
+    </div>
+
+    <div class="contact-content">
+      <div class="contact-info">
+        <div class="info-card">
+          <div class="info-icon">
+            <svg viewBox="0 0 32 32" fill="none"><path d="M6 8H26V24H6V8Z" stroke="currentColor" stroke-width="1.5"/><path d="M6 8L16 18L26 8" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <div>
+            <h4>Email</h4>
+            <p>info&#64;shanti-terapia.hu</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">
+            <svg viewBox="0 0 32 32" fill="none"><path d="M8 4H12L15 10L12 12C14 16 16 18 20 20L22 17L28 20V24C28 26 26 28 24 28C16 28 4 16 4 8C4 6 6 4 8 4Z" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <div>
+            <h4>Telefon</h4>
+            <p>+36 30 123 4567</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">
+            <svg viewBox="0 0 32 32" fill="none"><path d="M16 28C16 28 26 20 26 14C26 8 21 4 16 4C11 4 6 8 6 14C6 20 16 28 16 28Z" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="14" r="4" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <div>
+            <h4>Helyszín</h4>
+            <p>Budapest, belváros</p>
+          </div>
+        </div>
+
+        <div class="working-hours">
+          <h4>Nyitvatartás</h4>
+          <ul>
+            <li><span>Hétfő – Péntek</span><span>9:00 – 19:00</span></li>
+            <li><span>Szombat</span><span>9:00 – 14:00</span></li>
+            <li><span>Vasárnap</span><span>Zárva</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <form class="contact-form" (submit)="$event.preventDefault()">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Név</label>
+            <input type="text" id="name" placeholder="Teljes neved">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="email&#64;pelda.hu">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="service">Szolgáltatás</label>
+          <select id="service">
+            <option value="">Válassz szolgáltatást...</option>
+            <option value="lomi">Hawaii Lomi Lomi Masszázs</option>
+            <option value="kineziologia">Kineziológia</option>
+            <option value="energetikai">Energetikai Kezelés</option>
+            <option value="tanacsadas">Holisztikus Tanácsadás</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Üzenet</label>
+          <textarea id="message" rows="5" placeholder="Írd le, miben segíthetek..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Üzenet küldése</button>
+      </form>
+    </div>
+  </div>
+</section>

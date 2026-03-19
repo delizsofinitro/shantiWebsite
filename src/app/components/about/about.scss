@@ -1,0 +1,150 @@
+:host {
+  display: block;
+}
+
+.about {
+  padding: var(--section-padding);
+  background-color: var(--color-cream);
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.about-image {
+  position: relative;
+}
+
+.about-image-placeholder {
+  border-radius: 20px;
+  overflow: hidden;
+
+  svg {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.about-experience {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background: var(--color-terracotta);
+  color: var(--color-white);
+  padding: 24px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(193, 123, 94, 0.3);
+
+  .experience-number {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .experience-text {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.9;
+  }
+}
+
+.about-text {
+  .divider-left {
+    margin: 0 0 32px;
+  }
+
+  .about-lead {
+    font-size: 1.1rem;
+    color: var(--color-text);
+    margin-bottom: 16px;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  p {
+    color: var(--color-text-light);
+    margin-bottom: 24px;
+    line-height: 1.8;
+  }
+}
+
+.about-values {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 32px;
+}
+
+.value-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+
+  h4 {
+    font-size: 1rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin-bottom: 0;
+  }
+}
+
+.value-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  color: var(--color-sage);
+  background: var(--color-sage-light);
+  border-radius: 50%;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-experience {
+    right: 10px;
+    bottom: -15px;
+    padding: 18px;
+
+    .experience-number {
+      font-size: 2rem;
+    }
+  }
+
+  .about-text {
+    .divider-left {
+      margin: 0 auto 32px;
+    }
+
+    text-align: center;
+  }
+
+  .value-item {
+    text-align: left;
+  }
+}
