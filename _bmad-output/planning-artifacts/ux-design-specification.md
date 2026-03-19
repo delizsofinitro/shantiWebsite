@@ -1,5 +1,5 @@
 ---
-stepsCompleted: [1, 2, 3, 4]
+stepsCompleted: [1, 2, 3, 4, 5, 6]
 inputDocuments: []
 ---
 
@@ -217,3 +217,65 @@ Kíváncsiság → Nyugalom → Bizalom → Várakozás → Öröm
 2. **Mindig van menekülőút** – Telefonszám és email soha nincs messze. Hiba esetén a látogató azonnal talál alternatívát.
 3. **Személyes, nem klinikai** – „Vendégek", nem „ügyfelek". „Kezelés", nem „szolgáltatás". Az oldal egy ember hangján szól.
 4. **Összetartozás** – A látogató nem egy tranzakció. Egy közösség tagja, ahol jó lenni.
+
+---
+
+## UX Pattern Analysis & Inspiration
+
+### Inspiráló oldalak elemzése
+
+#### Nutrition Stripped (nutritionstripped.com)
+
+**Ami jól működik:**
+- **Személyes brand** – A teljes oldal McKel Hill személye köré épül, nem klinikai, hanem emberi
+- **Érzés-központú hero** – „When Food Feels Calm, Life Opens Up" – nem szolgáltatás-alapú, hanem érzelmi
+- **Meleg, természetes fotók** – Valódi képek, napsütéses hangulat
+- **Szelíd CTA-k** – Nem nyomulós, hanem meghívó tónusú
+- **Testimonialok** – Személyes idézetek, nem csillagos értékelések
+- **Szekciók váltakozása** – Lélegző, nem zsúfolt layout
+
+#### LOFF Wellness (loff-wellness.nl)
+
+**Ami jól működik:**
+- **Közvetlen „Reserveren" gombok** – Minden csomagnál azonnal foglalhat a vendég
+- **Élmény-csomagok kiemelése** – Nem lista, hanem élmény (pl. „Moeder & dochter beauty uitje")
+- **Valódi vendégértékelések** – 3890 értékelés, 5.0 átlag
+- **Kontakt infó mindig elérhető** – Cím, telefon, nyitvatartás, route tervező
+- **Blog szekció** – Tartalommal építi a bizalmat és SEO-t
+
+### Átvehető UX minták
+
+| Forrás | Minta | Alkalmazás a Shantiban |
+|---|---|---|
+| Nutrition Stripped | Érzés-központú hero szöveg | Már megvan: „Találd meg a belső békéd" |
+| Nutrition Stripped | Személyes hangvétel | Az egész oldalon – „vendég", nem „ügyfél" |
+| Nutrition Stripped | Szelíd CTA stílus | Nem nyomulós gombok, hanem meghívó |
+| LOFF | Közvetlen foglalás gomb | Minden szolgáltatásnál és az árlista oldalon |
+| LOFF | Kontakt infó kéznél | Footer, contact szekció, sticky mobil CTA |
+| LOFF | Nyitvatartás jól látható | Contact szekcióba integrálva |
+
+### Anti-minták – amit elkerülünk
+
+| Anti-minta | Miért kerüljük |
+|---|---|
+| Klinikai/orvosi megjelenés | Steril, fehér-kék, orvosi hangulat – nem illik a Shanti melegségéhez |
+| Popup-ok | Megtöri a nyugalmat, agresszív érzés |
+| Túl sok CTA egy szekcióban | Zavart kelt, nem nyugalmat |
+| Stock fotók | Bizalmatlanságot szül – valódi képek kellenek |
+| Rejtett árak / „Kérjen árajánlatot" | Bizonytalanságot okoz – az átláthatóság a mi erősségünk |
+| Auto-play videó/zene | Megijeszti a mobilos felhasználót |
+
+### Design inspiráció stratégia
+
+**Átvesszük:**
+- Nutrition Stripped: személyes brand + érzés-központú kommunikáció
+- LOFF: közvetlen foglalási lehetőség + átlátható szolgáltatás struktúra
+
+**Adaptáljuk:**
+- LOFF csomagos megjelenítését → Shanti árlista oldal kártyás layout-ja
+- Nutrition Stripped szekció váltakozását → Shanti landing page ritmusa
+
+**Elkerüljük:**
+- Klinikai/orvosi design
+- Popup-okat és agresszív konverziós elemeket
+- Rejtett árakat
