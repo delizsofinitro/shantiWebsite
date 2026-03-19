@@ -1,5 +1,5 @@
 ---
-stepsCompleted: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+stepsCompleted: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 inputDocuments: []
 ---
 
@@ -656,3 +656,108 @@ flowchart TD
 3. **Soha nincs zsákutca**: Telefonszám és email mindig látható
 4. **4 órás válasz ígéret**: Reális, teljesíthető, bizalmat épít
 5. **„Neked ajánlom, ha..."**: Minden szolgáltatásnál segíti a döntést
+
+---
+
+## 11. Komponens stratégia
+
+### Meglévő komponensek auditja
+
+| Komponens | Állapot | Megjegyzés |
+|-----------|---------|------------|
+| Header | ✅ Kész | Fixed nav, hamburger menü, scroll effekt |
+| Hero | ✅ Kész | 2 oszlopos, lebegő badge-ek |
+| Services | ✅ Kész | 2×2 kártya grid, SVG ikonok |
+| About | ⚠️ Részleges | Szöveg kész, **fotó SVG placeholder** – cserélni kell |
+| Testimonials | ✅ Kész | 3 kártya layout |
+| Contact | ⚠️ Részleges | Form layout kész, **email küldés hiányzik** |
+| Footer | ✅ Kész | 3 oszlopos, sötét háttér |
+
+### Szükséges új/módosított komponensek
+
+| Komponens | Prioritás | Típus | Leírás |
+|-----------|-----------|-------|--------|
+| Árlista oldal | 🔴 Magas | Új route + komponens | `/arlista` – külön oldal árakkal, szolgáltatás leírásokkal |
+| Contact form fix | 🔴 Magas | Módosítás | EmailJS integráció → delizsofia108@gmail.com |
+| About fotó | 🔴 Magas | Módosítás | SVG placeholder cseréje valódi fotóra |
+| Szolgáltatás kártya | 🟡 Közepes | Módosítás | „Neked ajánlom, ha..." szöveg hozzáadása |
+| Sticky CTA | 🟡 Közepes | Új | Mobilon ragadós „Kapcsolat" gomb |
+| Success message | 🟡 Közepes | Új | Form beküldés utáni visszajelzés |
+| Form error fallback | 🟢 Alacsony | Új | „Nem gond, felhívom" – telefonszám megjelenítés hiba esetén |
+
+### Implementációs ütemterv
+
+**1. fázis – Magas prioritás:**
+- Árlista oldal létrehozása (`/arlista` route)
+- EmailJS integráció a contact formba
+- About szekció fotó csere
+
+**2. fázis – Közepes prioritás:**
+- „Neked ajánlom, ha..." szövegek hozzáadása minden szolgáltatás kártyához
+- Sticky CTA gomb mobilon
+- Sikeres form beküldés visszajelzés
+
+**3. fázis – Alacsony prioritás:**
+- Form hiba fallback (telefonszám megjelenítés)
+- Animációk és mikrointerakciók finomítása
+
+---
+
+## 12. UX Konzisztencia minták
+
+### Gomb hierarchia
+
+| Szint | Stílus | Használat | Példa |
+|-------|--------|-----------|-------|
+| **Elsődleges (Primary)** | Terrakotta háttér, sötétbarna szöveg | Fő CTA-k | „Kapcsolatfelvétel", „Üzenet küldése" |
+| **Másodlagos (Secondary)** | Átlátszó, terrakotta keret | Kiegészítő akciók | „Részletek", „Árlista megtekintése" |
+| **Szöveges (Text/Link)** | Aláhúzás nélkül, terrakotta szín, hover: aláhúzás | Navigációs linkek | „Tudj meg többet", „Vissza a főoldalra" |
+| **Sötét háttéren** | Terrakotta háttér, fehér szöveg | Footer CTA-k | „Írj nekem" |
+
+**Hover viselkedés:** Minden gombon enyhe méretváltozás (`scale: 1.03`) + tranzíció `0.3s ease`
+
+### Form minták és validáció
+
+**Contact form:**
+- Valós idejű validáció (blur-re aktiválódik, nem gépelés közben)
+- Hibaüzenetek: terrakotta szín, ikon + rövid szöveg (pl. „Kérlek add meg az email címed")
+- Sikeres küldés: zsálya zöld háttérű üzenet – „Köszönöm az üzeneted! 4 órán belül válaszolok."
+- **Hiba fallback**: Ha az EmailJS nem működik → „Nem gond, hívj fel: [telefonszám]" + email link
+
+**Mezők:**
+- Cream háttér, 1px beige keret
+- Fókuszban: terrakotta keret, enyhe árnyék
+- Placeholder szöveg: halvány szürke, eltűnik fókuszra
+- Label mindig látható (floating label nincs – egyszerűség)
+
+### Navigáció minták
+
+- **Desktop**: Fixed header, átlátszó → scroll után cream háttér + árnyék
+- **Mobil**: Hamburger menü, teljes képernyős overlay cream háttérrel
+- **Árlista oldal**: Vissza gomb + header normál navigáció
+- **Smooth scroll**: Anchor linkek animált görgetéssel (`scroll-behavior: smooth`)
+- **Aktív szekció**: Navigációban a jelenlegi szekció terrakotta aláhúzással jelölve
+
+### Visszajelzés minták (Feedback)
+
+| Típus | Szín | Ikon | Példa |
+|-------|------|------|-------|
+| **Siker** | Zsálya zöld (`#9CAF88`) | ✅ | „Üzeneted elküldve!" |
+| **Hiba** | Terrakotta (`#C17B5E`) | ❗ | „Valami hiba történt" |
+| **Info** | Beige (`#F5EDE3`) | ℹ️ | „4 órán belül válaszolok" |
+
+**Megjelenés:** Toast-szerű üzenet a form felett (nem modal, nem blokkolja az oldalt). 5 mp után halványodik el, vagy kézzel bezárható.
+
+### Mobil-specifikus minták
+
+- **Sticky CTA**: Fix „Kapcsolat" gomb az oldal alján, scroll után jelenik meg
+- **Telefonszám**: Kattintható `tel:` link mindenhol
+- **Kártyák**: Egymás alá rendezve (1 oszlop)
+- **Képek**: `object-fit: cover`, arányos méretezés
+- **Touch target**: Minimum 44×44px minden interaktív elemen
+
+### Betöltés és üres állapotok
+
+- **Betöltés**: Egyszerű CSS spinner terrakotta színben (nincs skeleton – egyoldalas)
+- **Képek lazy load**: `loading="lazy"` attribútum
+- **Fallback kép**: Ha egy fotó nem tölt be → cream háttérű placeholder Shanti logóval
