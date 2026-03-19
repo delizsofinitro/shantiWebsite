@@ -279,3 +279,40 @@ Kíváncsiság → Nyugalom → Bizalom → Várakozás → Öröm
 - Klinikai/orvosi design
 - Popup-okat és agresszív konverziós elemeket
 - Rejtett árakat
+
+---
+
+## Design System Foundation
+
+### Design System választás
+
+**Egyedi (Custom) Design System** – CSS Custom Properties + SCSS alapú komponens rendszer
+
+### Választás indoklása
+
+- A Shanti vizuális világa egyedi: meleg terrakotta, zsálya zöld, krém – egyetlen UI framework sem adja ezt alapból
+- Az oldal landing page jellegű, ~8-10 komplex komponenssel – nem szükséges nehézsúlyú framework
+- A meglévő kódbázis már jól strukturált CSS változókkal és SCSS-sel épül
+- Angular standalone komponensek természetes izolációt adnak
+- Teljes kontroll a hangulat és az érzés felett – nincs framework „íze"
+
+### Implementációs megközelítés
+
+**Design Tokens (CSS Custom Properties):**
+- Színek: `--color-terracotta`, `--color-sage`, `--color-cream` stb. (már megvan)
+- Tipográfia: `--font-heading`, `--font-body` (már megvan)
+- Spacing: `--section-padding`, `--container-max` (már megvan)
+- Új tokenek: `--radius-card: 20px`, `--radius-button: 50px`, `--shadow-card`, `--shadow-hover`
+
+**Komponens könyvtár:**
+- Gombok: `.btn-primary`, `.btn-outline` (már megvan)
+- Kártyák: egységes kártya stílus (szolgáltatások, árlista, vélemények)
+- Form elemek: input, textarea, select, label – egységes stílus
+- Layout: `.container`, szekció padding rendszer
+
+### Testreszabási stratégia
+
+- Új oldalakhoz (árlista) a meglévő tokenek és komponensek újrafelhasználása
+- Sötét/világos szekció háttér váltakozás rendszerezése
+- Mobilra optimalizált breakpoint rendszer (480/768/1024px)
+- Animációs utility osztályok (fade-in, slide-up) – később, ha szükséges
