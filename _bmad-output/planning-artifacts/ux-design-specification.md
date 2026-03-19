@@ -1,5 +1,5 @@
 ---
-stepsCompleted: [1, 2, 3, 4, 5, 6, 7]
+stepsCompleted: [1, 2, 3, 4, 5, 6, 7, 8]
 inputDocuments: []
 ---
 
@@ -389,3 +389,110 @@ A kettős cél (megismerés + foglalás) egyformán fontos:
 - Form elküldve → „Köszönöm szépen! Hamarosan jelentkezem 💛" üzenet
 - A látogató tudja: emailben vagy telefonon kap választ (amit ő kért)
 - Érzés: „Már várom a kezelést!"
+
+---
+
+## Visual Design Foundation
+
+### Színrendszer
+
+**Véglegesített paletta szemantikus leképezéssel:**
+
+| Szemantikus név | Szín | Hex |
+|---|---|---|
+| Primary | Terrakotta | #C17B5E |
+| Primary Hover | Terrakotta világos | #D4A088 |
+| Primary Active | Terrakotta sötét | #A8624A |
+| Secondary | Zsálya zöld | #9CAF88 |
+| Secondary Hover | Zsálya világos | #B5C4A5 |
+| Background | Krém | #FFF9F0 |
+| Background Alt | Bézs | #F5EDE3 |
+| Surface | Fehér | #FFFFFF |
+| Text Primary | Sötét barna | #3D3229 |
+| Text Secondary | Világos barna | #6B5E52 |
+| Success | Zsálya zöld | #9CAF88 |
+| Error | Terrakotta sötét | #A8624A |
+
+**Szekció háttér váltakozás:** Krém → Bézs → Krém → Bézs
+
+### Gomb rendszer
+
+**Primary gomb (világos háttéren):**
+- Alapállapot: háttér terrakotta `#C17B5E`, szöveg sötét barna `#3D3229` (~8:1 kontraszt ✅)
+- Hover: háttér terrakotta világos `#D4A088`, szöveg sötét barna
+- Active: háttér terrakotta sötét `#A8624A`, szöveg sötét barna
+
+**Primary gomb (sötét háttéren – footer):**
+- Alapállapot: háttér terrakotta `#C17B5E`, szöveg fehér `#FFFFFF`
+- Hover: háttér terrakotta világos `#D4A088`, szöveg fehér
+- Active: háttér terrakotta sötét `#A8624A`, szöveg fehér
+
+**Outline gomb:**
+- Alapállapot: keret + szöveg terrakotta, háttér átlátszó
+- Hover: háttér kitöltődik terrakottával, szöveg sötét barnára vált
+
+### Tipográfia rendszer
+
+- **Heading**: Playfair Display (400, 700) – elegáns serif
+- **Body**: Inter (400, 600) – tiszta sans-serif
+- **Font betöltés**: Google Fonts, `font-display: swap`
+- **Font preload**: `<link rel="preload">` a Playfair Display-hez – layout shift megelőzése
+- **Fallback**: Playfair → Georgia → serif | Inter → Segoe UI → sans-serif
+- **Olvashatóság**: Body min. 16px, line-height 1.7
+
+### Spacing & Layout alap
+
+**Alap egység: 8px** – CSS Custom Properties tokenekként
+
+| Token | Érték | Használat |
+|---|---|---|
+| `--space-xs` | 4px | Ikon és szöveg közötti rés |
+| `--space-sm` | 8px | Elemek közötti minimális tér |
+| `--space-md` | 16px | Kártya belső padding |
+| `--space-lg` | 24px | Container padding |
+| `--space-xl` | 40px | Szekció cím alatti tér |
+| `--space-2xl` | 60px | Szekciók közötti padding (mobil) |
+| `--space-3xl` | 100px | Szekciók közötti padding (desktop) |
+
+**Reszponzív spacing**: Szekció padding tokenek breakpoint-onként változnak:
+- Mobil: `--section-padding: 60px 0`
+- Desktop (1024px+): `--section-padding: 100px 0`
+
+**Layout**: CSS Grid, max-width 1200px, lélegző white space szekciók között.
+
+### Border Radius tokenek
+
+| Token | Érték | Használat |
+|---|---|---|
+| `--radius-card` | 20px | Kártya lekerekítés (szolgáltatás, árlista, vélemény) |
+| `--radius-button` | 50px | Pill-shaped gombok |
+| `--radius-input` | 12px | Form input mezők |
+
+### Kép kezelési szabályok
+
+| Szempont | Szabály |
+|---|---|
+| **Border radius** | `--radius-card` (20px) – képek is lekerekítettek, mint a kártyák |
+| **Hero kép aspect ratio** | 16:9 |
+| **Portrait kép (rólam)** | 3:4 |
+| **Overlay** | Enyhe lineáris gradient a kép aljára, ha szöveg kerül rá (hero) |
+| **Filter** | Nem szükséges – a fotók hangulata természetesen illik a palettához |
+| **Formátum** | WebP elsődlegesen, fallback JPG |
+| **Lazy loading** | Minden kép a fold alatt |
+
+### Akadálymentesség
+
+| Szempont | Szabály |
+|---|---|
+| **Kontraszt** | Min. 4.5:1 normál szöveg, 3:1 nagy szöveg (WCAG AA) |
+| **CTA gomb (világos bg)** | Sötét barna (#3D3229) terrakottán (#C17B5E): ~8:1 ✅ |
+| **CTA gomb (sötét bg)** | Fehér (#FFF) terrakottán (#C17B5E): ~3.8:1 – nagy szöveg ✅ |
+| **Body szöveg** | Sötét barna (#3D3229) krémen (#FFF9F0): ~12:1 ✅ |
+| **Touch target** | Min. 44×44px |
+| **Focus** | Látható outline minden fókuszálható elemen |
+| **Alt szöveg** | Dekoratív: `alt=""`, tartalmi: leíró szöveg |
+| **Szemantikus HTML** | `<nav>`, `<main>`, `<section>`, `<footer>` |
+| **Form label** | Explicit `<label>` minden inputhoz |
+| **Nyelv** | `<html lang="hu">` – helyes screen reader kiejtés |
+| **Skip link** | „Ugrás a tartalomra" rejtett link billentyűzetes navigációhoz |
+| **Reduced motion** | `@media (prefers-reduced-motion)` – animációk kikapcsolása |
