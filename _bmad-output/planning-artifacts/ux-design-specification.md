@@ -162,3 +162,58 @@ Minden szekció (hero, szolgáltatások, rólam, vélemények) ezekre a pillanat
 2. **Átláthatóság** – Árak, szolgáltatások, elérhetőség – semmi rejtett. A bizalom az átláthatóságból ered.
 3. **Minimális erőfeszítés** – Időpontfoglalás és árlista megtekintése egyaránt 1-3 lépésen belül elérhető bármely oldalról.
 4. **Személyes kapcsolat** – Az oldal nem automatizált rendszert közvetít, hanem egy valódi ember személyes figyelmét. A válasz emailben vagy visszahívással érkezik – a látogató választ.
+
+---
+
+## Desired Emotional Response
+
+### Elsődleges érzelmi célok
+
+| Fázis | Érzés | Design megvalósítás |
+|---|---|---|
+| **Érkezés** | „Azonnal érzem, hogy jó helyen vagyok" | Meleg fotók, természetes színpaletta, lélegző layout |
+| **Ismerkedés** | „Ezt az embert megbízhatónak érzem" | Valódi fotók, személyes hangvételű szövegek, vendégvélemények |
+| **Döntés** | „Pontosan tudom, mit kapok és mennyiért" | Átlátható árlista, tiszta szolgáltatásleírás |
+| **Cselekvés** | „Már várom a kezelést!" | Könnyű foglalás, azonnali visszajelzés, várakozást építő üzenet küldés után |
+
+### Érzelmi utazás térkép
+
+```
+Kíváncsiság → Nyugalom → Bizalom → Várakozás → Öröm
+   (érkezés)   (hero)    (rólam)   (foglalás)   (megerősítés)
+```
+
+**Érkezés**: A látogató keresgél Google-ön vagy Instáról jön → kíváncsi, de óvatos.
+**Hero szekció**: A meleg vizuális világ azonnal átöleli → „Jó helyen vagyok."
+**Tartalom böngészés**: Minden szekció mélyíti a bizalmat → „Ez nekem való."
+**Foglalás/Árlista**: Természetes lezárás → „Már várom a kezelést!"
+**Hiba esetén**: Telefonszám mindig kéznél van → „Nem gond, felhívom." Soha nincs zsákutca.
+
+### Mikro-érzelmek
+
+| Érzés | Prioritás | Kezelés |
+|---|---|---|
+| **Összetartozás** | ⭐ Kiemelt | Az oldal azt kommunikálja: „Egy közösség vagy, ahol törődnek veled." Nem klinikai, hanem személyes. |
+| **Bizalom** | ⭐ Kiemelt | Átláthatóság mindenben – árak, folyamat, személy |
+| **Nyugalom** | ⭐ Kiemelt | Vizuális és interakciós szinten is – semmi idegesítő, semmi sürgető |
+| **Megkönnyebbülés** | Fontos | „Végre találtam valakit" – a rólam szekció és vélemények ezt erősítik |
+| Frusztráció | ❌ Elkerülendő | Mindig van alternatív út (telefon, email). Soha nincs zsákutca. |
+| Bizonytalanság | ❌ Elkerülendő | Egyértelmű árak, egyértelmű folyamat |
+
+### Design implikációk
+
+| Érzelmi cél | UX döntés |
+|---|---|
+| „Jó helyen vagyok" | Hero: teljes képernyős meleg fotó + nyugodt tipográfia, nincs pop-up, nincs agresszív CTA |
+| „Megbízom benne" | Valódi fotók (nem stock), vendégvélemények, 10+ év tapasztalat badge |
+| „Tudom, mire számíthatok" | Önálló árlista szekció, szolgáltatásonkénti részletek |
+| „Már várom!" | Form küldés után: „Köszönöm! Hamarosan jelentkezem 💛" – személyes üzenet |
+| „Soha nincs zsákutca" | Telefonszám és email MINDIG látható: footerben, contact szekcióban, sticky mobilon |
+| Összetartozás érzése | Személyes hangvétel, „Vendégeim mondták" (nem „ügyfelek"), meleg képi világ |
+
+### Érzelmi design alapelvek
+
+1. **Ölelés, nem eladás** – Az oldal nem nyomulós. Meghív, befogad, nyugalmat ad.
+2. **Mindig van menekülőút** – Telefonszám és email soha nincs messze. Hiba esetén a látogató azonnal talál alternatívát.
+3. **Személyes, nem klinikai** – „Vendégek", nem „ügyfelek". „Kezelés", nem „szolgáltatás". Az oldal egy ember hangján szól.
+4. **Összetartozás** – A látogató nem egy tranzakció. Egy közösség tagja, ahol jó lenni.
