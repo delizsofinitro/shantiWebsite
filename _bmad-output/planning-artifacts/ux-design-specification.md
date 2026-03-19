@@ -1,5 +1,5 @@
 ---
-stepsCompleted: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+stepsCompleted: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 inputDocuments: []
 ---
 
@@ -761,3 +761,83 @@ flowchart TD
 - **Betöltés**: Egyszerű CSS spinner terrakotta színben (nincs skeleton – egyoldalas)
 - **Képek lazy load**: `loading="lazy"` attribútum
 - **Fallback kép**: Ha egy fotó nem tölt be → cream háttérű placeholder Shanti logóval
+
+---
+
+## 13. Responsive Design & Accessibility
+
+### Responsive stratégia
+
+**Mobile-first megközelítés** – a célközönség nagy része telefonról érkezik (Google keresés, Instagram link).
+
+| Eszköz | Elrendezés | Kulcs döntések |
+|--------|-----------|----------------|
+| **Mobil** (320–767px) | 1 oszlopos, vertikális | Sticky CTA alul, hamburger menü, kártyák egymás alatt |
+| **Tablet** (768–1023px) | 2 oszlopos grid ahol van | Szolgáltatás kártyák 2×2, hero 2 oszlop marad |
+| **Desktop** (1024px+) | Teljes layout | Fixed header, széles hero, 2×2 kártyák, 3 oszlop testimonial |
+
+### Breakpoint stratégia
+
+```scss
+// Mobile-first breakpoints
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-wide: 1440px;
+
+// Használat:
+@media (min-width: $breakpoint-tablet) { ... }
+@media (min-width: $breakpoint-desktop) { ... }
+```
+
+**Max szélesség:** `1200px` centered konténer, utána cream háttér folytatódik
+
+### Accessibility stratégia
+
+**Cél: WCAG 2.1 AA szint**
+
+**Színkontraszt ellenőrzés:**
+
+| Kombináció | Arány | Megfelelés |
+|------------|-------|------------|
+| Sötétbarna (`#3D3229`) cream-en (`#FFF9F0`) | ~10:1 | ✅ AAA |
+| Sötétbarna terrakottán (`#C17B5E`) | ~3.2:1 | ⚠️ Nagy szöveg OK → gombokon nagy betűméretet használunk |
+| Fehér sötét háttéren (footer) | ~12:1 | ✅ AAA |
+| Terrakotta cream-en (linkek) | ~3.5:1 | ⚠️ Nagy szöveg OK → linkek legalább 18px |
+
+**Szemantikus HTML:**
+- `<header>`, `<nav>`, `<main>`, `<section>`, `<footer>`
+- Minden `<img>`-nek `alt` szöveg
+- Form elemeknek `<label>` társítás
+- Heading hierarchia (h1 → h2 → h3, kihagyás nélkül)
+
+**Billentyűzet navigáció:**
+- Skip link: „Ugrás a tartalomra" – rejtett, Tab-ra megjelenik
+- Tab-sorrend logikus (fentről le, balról jobbra)
+- Fókusz indikátor: 2px terrakotta outline, 2px offset
+- Escape bezárja a mobil menüt
+
+**Screen reader:**
+- `aria-label` a hamburger gombra („Menü megnyitása")
+- `aria-expanded` a menü állapotára
+- `aria-live="polite"` a form visszajelzéseknél
+- `role="alert"` hibaüzeneteknél
+
+### Tesztelési stratégia
+
+**Responsive tesztelés:**
+- Chrome DevTools device emulator (elsődleges)
+- Valódi telefon teszt: iPhone SE (kis) + átlagos Android
+- Tablet: iPad szimuláció
+
+**Accessibility tesztelés:**
+- Lighthouse Accessibility audit (célpont: 90+)
+- Tab-navigáció végigpróbálása kézzel
+- Színkontraszt: WebAIM Contrast Checker
+
+### Implementációs irányelvek
+
+- `rem` egységek használata (`px` helyett) – alap `16px`
+- Képek: `max-width: 100%`, `height: auto`
+- Flexbox + CSS Grid – nincs float
+- `prefers-reduced-motion` media query: animációk kikapcsolása
+- Minimum touch target: `44×44px`
