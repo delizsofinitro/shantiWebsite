@@ -1,5 +1,5 @@
 ---
-stepsCompleted: [1, 2, 3, 4, 5, 6, 7, 8]
+stepsCompleted: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 inputDocuments: []
 ---
 
@@ -496,3 +496,163 @@ A kettős cél (megismerés + foglalás) egyformán fontos:
 | **Nyelv** | `<html lang="hu">` – helyes screen reader kiejtés |
 | **Skip link** | „Ugrás a tartalomra" rejtett link billentyűzetes navigációhoz |
 | **Reduced motion** | `@media (prefers-reduced-motion)` – animációk kikapcsolása |
+
+---
+
+## Design Direction döntés
+
+### Választott irány
+
+**A jelenlegi design marad változatlan.** A meglévő kódbázisban lévő vizuális világ (két oszlopos hero, kártya-alapú szekciók, terrakotta–zsálya–krém paletta, Playfair Display + Inter) a végleges design irány.
+
+### Fejlesztési fókusz
+
+1. Valódi fotók beépítése (rólam szekció, hero háttér)
+2. Árlista oldal létrehozása (új route: `/arlista`)
+3. Contact form EmailJS integrációja (delizsofia108@gmail.com)
+4. Mobil UX finomhangolás (sticky CTA, teljes képernyős menü)
+5. Akadálymentességi javítások (lang, skip link, reduced motion)
+6. Gomb szövegszín frissítése sötét barnára
+
+---
+
+## User Journey Flows
+
+### 1. Journey: Ajánlott látogató – gyors foglalás
+
+**Kiindulás:** Szájhagyomány – „A barátnőm mesélte, milyen fantasztikus volt"
+**Cél:** Időpont foglalás gyorsan, mert a bizalom már megvan
+
+```mermaid
+flowchart TD
+    A[Barátnő/ismerős ajánlása] --> B[Link kattintás / Google keresés]
+    B --> C[Landing page megnyílik]
+    C --> D{Első benyomás: Jó helyen vagyok?}
+    D -->|Igen| E[Gyors áttekintés – scrollol]
+    D -->|Nem biztos| F[Rólam szekció → bizalom épül]
+    F --> E
+    E --> G{Tudni akarja az árat?}
+    G -->|Igen| H[Árlista oldal megtekintése]
+    G -->|Nem, foglal| I[CTA: Időpontfoglalás]
+    H --> I
+    I --> J[Contact form kitöltése]
+    J --> K[Elküldve → Visszajelzés: 4 órán belül jelentkezem 💛]
+    K --> L[✅ Sikeres journey]
+```
+
+**Kritikus pontok:**
+- A hero szekciónak azonnal megerősítenie kell: „Igen, ez az a hely, amiről meséltek"
+- A CTA gomb mindig elérhető (sticky mobilon)
+- Az árlista 1 kattintásra a navigációból
+
+**Potenciális buktatók és megoldások:**
+
+| Buktató | Megoldás |
+|---|---|
+| Nem találja gyorsan a foglalás gombot | Sticky CTA mobilon, navigáció minden oldalon |
+| Nem érti melyik kezelés neki való | „Neked ajánlom, ha..." szöveg minden szolgáltatásnál |
+| Ár nem egyértelmű | Önálló árlista oldal, szolgáltatásonként rendezve |
+
+---
+
+### 2. Journey: Új látogató – felfedezés
+
+**Kiindulás:** Google keresés („holisztikus terápia Budaörs") vagy Instagram
+**Cél:** Megismerni a terapeutát → bizalmat építeni → foglalni
+
+```mermaid
+flowchart TD
+    A[Google: holisztikus terápia Budaörs] --> C[Landing page megnyílik]
+    A2[Instagram profil link] --> C
+    C --> D[Hero: Találd meg a belső békéd]
+    D --> E[Scrollol lefelé – felfedezés]
+    E --> F[Szolgáltatások: Mit kínál?]
+    F --> G{Érti melyik kezelés neki való?}
+    G -->|Igen| H[Tovább scrollol]
+    G -->|Nem| F2[Neked ajánlom, ha... szöveg segít]
+    F2 --> H
+    H --> I[Rólam szekció: Ki ez az ember?]
+    I --> J{Megbízik benne?}
+    J -->|Igen| K[Vélemények szekció → megerősítés]
+    J -->|Nem eléggé| I2[10+ év badge + valódi fotó segít]
+    I2 --> K
+    K --> L{Árat szeretne tudni?}
+    L -->|Igen| M[Árlista oldal]
+    L -->|Foglal| N[Contact form]
+    M --> N
+    N --> O[Form kitöltés + Hogyan keresselek?]
+    O --> P[Elküldve → 4 órán belül kereslek 💛]
+    P --> Q[✅ Sikeres journey]
+    J -->|Távozik| X[❌ Elvesztett látogató]
+```
+
+**Kritikus pontok:**
+- A **bizalomépítés** a legfontosabb – ez a journey a Rólam szekción áll vagy bukik
+- Ha nem érti melyik kezelés neki való → **el fog menni**
+- Az ár hiánya bizonytalanságot szül → **el fog menni**
+
+**Potenciális buktatók és megoldások:**
+
+| Buktató | Megoldás |
+|---|---|
+| Nem érti milyen kezelés lesz | „Neked ajánlom, ha..." mondat minden szolgáltatásnál |
+| Nincs meg a bizalom | Valódi fotók + vendégvélemények + tapasztalat badge |
+| Nem találja az árat | Árlista menüpont a navigációban, jól látható |
+
+---
+
+### 3. Journey: Árlista kereső
+
+**Kiindulás:** Konkrétan az árakra kíváncsi (összehasonlít, dönt)
+**Cél:** Átlátható árak → döntés → foglalás
+
+```mermaid
+flowchart TD
+    A[Érkezés – navigációban: Árak] --> B[Árlista oldal betölt]
+    B --> C[Szolgáltatás kártyák árakkal]
+    C --> D{Megtalálja amit keres?}
+    D -->|Igen| E{Elfogadható az ár?}
+    D -->|Nem| F[Vissza a szolgáltatásokhoz → részletek]
+    F --> C
+    E -->|Igen| G[CTA: Időpontfoglalás a kártyán]
+    E -->|Drága| H[Vélemények szekció → értéket lát]
+    H --> G
+    G --> I[Contact form – szolgáltatás előre kitöltve]
+    I --> J[Elküldve → 4 órán belül kereslek 💛]
+    J --> K[✅ Sikeres journey]
+    E -->|Távozik| X[❌ Elvesztett látogató]
+```
+
+**Kritikus pont:** Az árlista kártyán a „Időpontfoglalás" gomb **előre kitölti** a szolgáltatás mezőt a contact formban.
+
+---
+
+### Journey minták (közös elemek)
+
+**Navigációs minták:**
+- Minden oldalról elérhető a foglalás (sticky CTA + navigáció)
+- Árlista 1 kattintásra a navigációból
+- Vissza a főoldalra = logo kattintás
+
+**Visszajelzés minták:**
+- Form küldés → „Köszönöm! 4 órán belül kereslek 💛" (személyes, meleg)
+- Hiba esetén → „Valami nem sikerült. Hívj fel: [telefonszám]" (soha nincs zsákutca)
+- Validáció → Valós idejű, szelíd hibaüzenetek (terrakotta szín)
+
+**Bizalomépítő minták:**
+- Vendégvélemények mindegyik journey-ben megjelennek
+- „10+ év tapasztalat" badge a Rólam szekciónál
+- Valódi fotók – nem stock
+- „Neked ajánlom, ha..." szöveg minden szolgáltatásnál:
+  - **Lomi Lomi**: „Neked ajánlom, ha feszültséget érzel a testedben és szeretnéd elengedni"
+  - **Kineziológia**: „Neked ajánlom, ha szeretnéd megérteni a stressz mélyebb okait"
+  - **Energetikai kezelés**: „Neked ajánlom, ha kimerültnek érzed magad és szeretnéd visszanyerni az energiádat"
+  - **Holisztikus tanácsadás**: „Neked ajánlom, ha úgy érzed, elakadtál és új perspektívára van szükséged"
+
+### Flow optimalizálási elvek
+
+1. **3 lépéses foglalás**: CTA kattintás → form kitöltés → küldés
+2. **Előre kitöltés**: Árlista oldalról jön → szolgáltatás mező automatikusan kitöltve
+3. **Soha nincs zsákutca**: Telefonszám és email mindig látható
+4. **4 órás válasz ígéret**: Reális, teljesíthető, bizalmat épít
+5. **„Neked ajánlom, ha..."**: Minden szolgáltatásnál segíti a döntést
