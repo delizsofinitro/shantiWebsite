@@ -35,7 +35,7 @@ export class Services {
       icon: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M32 8L36 24H52L39 34L43 50L32 40L21 50L25 34L12 24H28L32 8Z" stroke="currentColor" stroke-width="1.5" fill="currentColor" opacity="0.1"/>
       </svg>`,
-      title: 'Energetikai Kezelés',
+      title: 'Kobido Arcmasszázs',
       description: 'Finom energetikai technikákkal segítem a tested öngyógyító folyamatait. A kezelés során helyreáll az energiaáramlás és mélyreható harmónia jön létre.',
       duration: '60 perc',
       price: 'Egyéni árazás'

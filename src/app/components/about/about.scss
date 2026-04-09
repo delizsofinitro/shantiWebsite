@@ -10,28 +10,26 @@
 .about-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: clamp(40px, 6vw, 80px);
   align-items: center;
 }
 
 .about-image {
   position: relative;
-}
+  // padding creates space for the experience badge so it never overflows the grid
+  padding: 0 24px 24px 0;
 
-.about-image-placeholder {
-  border-radius: 20px;
-  overflow: hidden;
-
-  svg {
+  img {
     width: 100%;
-    height: auto;
+    border-radius: 20px;
+    object-fit: cover;
   }
 }
 
 .about-experience {
   position: absolute;
-  bottom: -20px;
-  right: -20px;
+  bottom: 0;
+  right: 0;
   background: var(--color-terracotta);
   color: var(--color-white);
   padding: 24px;
@@ -120,28 +118,43 @@
   }
 }
 
-@media (max-width: 768px) {
+// ── Tablet ───────────────────────────────────────────────────────────────────
+@media (max-width: 1024px) {
   .about-content {
-    grid-template-columns: 1fr;
-    gap: 40px;
+    gap: clamp(32px, 4vw, 48px);
   }
 
   .about-experience {
-    right: 10px;
-    bottom: -15px;
     padding: 18px;
 
     .experience-number {
       font-size: 2rem;
     }
   }
+}
+
+// ── Mobile ───────────────────────────────────────────────────────────────────
+@media (max-width: 768px) {
+  .about {
+    padding: 64px 0;
+  }
+
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .about-image {
+    max-width: 480px;
+    margin: 0 auto;
+  }
 
   .about-text {
+    text-align: center;
+
     .divider-left {
       margin: 0 auto 32px;
     }
-
-    text-align: center;
   }
 
   .value-item {
